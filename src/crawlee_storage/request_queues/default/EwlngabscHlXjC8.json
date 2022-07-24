@@ -1,9 +1,0 @@
-{
-	"id": "EwlngabscHlXjC8",
-	"json": "{\"id\":\"EwlngabscHlXjC8\",\"url\":\"https://www.smartone.com/tc/mobile_and_price_plans/prepaid/index.jsp\",\"loadedUrl\":\"https://www.smartone.com/tc/mobile_and_price_plans/prepaid/index.jsp\",\"uniqueKey\":\"https://www.smartone.com/tc/mobile_and_price_plans/prepaid/index.jsp\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":1,\"errorMessages\":[\"TypeError [ERR_INVALID_URL]: Invalid URL\\n    at new NodeError (node:internal/errors:372:5)\\n    at URL.onParseError (node:internal/url:553:9)\\n    at parse (<anonymous>)\\n    at new URL (node:internal/url:629:5)\\n    at /home/user/mws_v2/node_modules/@crawlee/browser/internals/browser-crawler.js:401:16\\n    at Array.map (<anonymous>)\\n    at extractUrlsFromPage (/home/user/mws_v2/node_modules/@crawlee/browser/internals/browser-crawler.js:393:17)\\n    at runMicrotasks (<anonymous>)\\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\\n    at async browserCrawlerEnqueueLinks (/home/user/mws_v2/node_modules/@crawlee/browser/internals/browser-crawler.js:377:18)\"],\"headers\":{},\"userData\":{}}",
-	"method": "GET",
-	"orderNo": 1658642774913,
-	"retryCount": 1,
-	"uniqueKey": "https://www.smartone.com/tc/mobile_and_price_plans/prepaid/index.jsp",
-	"url": "https://www.smartone.com/tc/mobile_and_price_plans/prepaid/index.jsp"
-}

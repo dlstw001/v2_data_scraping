@@ -1,9 +1,0 @@
-{
-	"id": "8XDajHAe0BodQ46",
-	"json": "{\"id\":\"8XDajHAe0BodQ46\",\"url\":\"https://shop.smartone.com/tc/Register_ServicePlan/retention_index.jsp\",\"loadedUrl\":\"https://shop.smartone.com/tc/Register_ServicePlan/retention_index.jsp\",\"uniqueKey\":\"https://shop.smartone.com/tc/Register_ServicePlan/retention_index.jsp\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2022-07-24T06:06:10.773Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://shop.smartone.com/tc/Register_ServicePlan/retention_index.jsp",
-	"url": "https://shop.smartone.com/tc/Register_ServicePlan/retention_index.jsp"
-}

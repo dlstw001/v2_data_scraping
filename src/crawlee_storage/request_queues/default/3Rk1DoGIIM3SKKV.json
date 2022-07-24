@@ -1,9 +1,0 @@
-{
-	"id": "3Rk1DoGIIM3SKKV",
-	"json": "{\"id\":\"3Rk1DoGIIM3SKKV\",\"url\":\"https://shop.smartone.com/tc/storefront/cart.jsp\",\"uniqueKey\":\"https://shop.smartone.com/tc/storefront/cart.jsp\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
-	"method": "GET",
-	"orderNo": 1658642753595,
-	"retryCount": 0,
-	"uniqueKey": "https://shop.smartone.com/tc/storefront/cart.jsp",
-	"url": "https://shop.smartone.com/tc/storefront/cart.jsp"
-}

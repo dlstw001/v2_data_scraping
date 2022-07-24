@@ -1,9 +1,0 @@
-{
-	"id": "8BIARtTHYpeJp0M",
-	"json": "{\"id\":\"8BIARtTHYpeJp0M\",\"url\":\"https://www.smartone.com/tc/home/mobile-service-plans/valueAddedServices#security\",\"uniqueKey\":\"https://www.smartone.com/tc/home/mobile-service-plans/valueAddedServices\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
-	"method": "GET",
-	"orderNo": 1658642753594,
-	"retryCount": 0,
-	"uniqueKey": "https://www.smartone.com/tc/home/mobile-service-plans/valueAddedServices",
-	"url": "https://www.smartone.com/tc/home/mobile-service-plans/valueAddedServices#security"
-}

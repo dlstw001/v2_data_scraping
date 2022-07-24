@@ -1,9 +1,0 @@
-{
-	"id": "ffiUH7leBCu0rpM",
-	"json": "{\"id\":\"ffiUH7leBCu0rpM\",\"url\":\"https://www.smartone.com/en/home/\",\"loadedUrl\":\"https://www.smartone.com/en/home/\",\"uniqueKey\":\"https://www.smartone.com/en/home\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2022-07-24T06:05:55.326Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://www.smartone.com/en/home",
-	"url": "https://www.smartone.com/en/home/"
-}

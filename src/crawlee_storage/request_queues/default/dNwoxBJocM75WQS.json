@@ -1,9 +1,0 @@
-{
-	"id": "dNwoxBJocM75WQS",
-	"json": "{\"id\":\"dNwoxBJocM75WQS\",\"url\":\"https://www.smartone.com/\",\"loadedUrl\":\"https://www.smartone.com/tc/home/\",\"uniqueKey\":\"https://www.smartone.com\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2022-07-24T06:05:53.603Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://www.smartone.com",
-	"url": "https://www.smartone.com/"
-}

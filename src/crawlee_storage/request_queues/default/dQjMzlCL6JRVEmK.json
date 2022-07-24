@@ -1,9 +1,0 @@
-{
-	"id": "dQjMzlCL6JRVEmK",
-	"json": "{\"id\":\"dQjMzlCL6JRVEmK\",\"url\":\"https://www.smartone.com/en/myaccount/\",\"uniqueKey\":\"https://www.smartone.com/en/myaccount\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
-	"method": "GET",
-	"orderNo": 1658642755320,
-	"retryCount": 0,
-	"uniqueKey": "https://www.smartone.com/en/myaccount",
-	"url": "https://www.smartone.com/en/myaccount/"
-}

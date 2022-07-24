@@ -1,9 +1,0 @@
-{
-	"id": "vQOk6ZBvpVjcZjw",
-	"json": "{\"id\":\"vQOk6ZBvpVjcZjw\",\"url\":\"https://www.smartone.com/tc\",\"loadedUrl\":\"https://www.smartone.com/tc/home\",\"uniqueKey\":\"https://www.smartone.com/tc\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2022-07-24T06:05:56.346Z\"}",
-	"method": "GET",
-	"orderNo": null,
-	"retryCount": 0,
-	"uniqueKey": "https://www.smartone.com/tc",
-	"url": "https://www.smartone.com/tc"
-}
