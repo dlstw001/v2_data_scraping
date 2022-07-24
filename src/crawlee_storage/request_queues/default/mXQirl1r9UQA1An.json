@@ -1,0 +1,9 @@
+{
+	"id": "mXQirl1r9UQA1An",
+	"json": "{\"id\":\"mXQirl1r9UQA1An\",\"url\":\"https://www.smartone.com/tc/home/mobile-service-plans/5G-listing/detail?group=5g_uplan&plan=5g_uplan_50g_hs\",\"uniqueKey\":\"https://www.smartone.com/tc/home/mobile-service-plans/5G-listing/detail?group=5g_uplan&plan=5g_uplan_50g_hs\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
+	"method": "GET",
+	"orderNo": 1658642766701,
+	"retryCount": 0,
+	"uniqueKey": "https://www.smartone.com/tc/home/mobile-service-plans/5G-listing/detail?group=5g_uplan&plan=5g_uplan_50g_hs",
+	"url": "https://www.smartone.com/tc/home/mobile-service-plans/5G-listing/detail?group=5g_uplan&plan=5g_uplan_50g_hs"
+}

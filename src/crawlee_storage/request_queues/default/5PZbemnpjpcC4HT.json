@@ -1,0 +1,9 @@
+{
+	"id": "5PZbemnpjpcC4HT",
+	"json": "{\"id\":\"5PZbemnpjpcC4HT\",\"url\":\"https://5g.smartone.com/tc/5G/\",\"loadedUrl\":\"https://5g.smartone.com/tc/5G/\",\"uniqueKey\":\"https://5g.smartone.com/tc/5G\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2022-07-24T06:06:10.192Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://5g.smartone.com/tc/5G",
+	"url": "https://5g.smartone.com/tc/5G/"
+}

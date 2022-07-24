@@ -1,0 +1,9 @@
+{
+	"id": "UAnQbd7dvSHm4kn",
+	"json": "{\"id\":\"UAnQbd7dvSHm4kn\",\"url\":\"https://www.smartone.com/tc/home/mobile-service-plans/student-listing/detail?group=5g_uplan&plan=5g_uplan_10g\",\"uniqueKey\":\"https://www.smartone.com/tc/home/mobile-service-plans/student-listing/detail?group=5g_uplan&plan=5g_uplan_10g\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
+	"method": "GET",
+	"orderNo": 1658642769857,
+	"retryCount": 0,
+	"uniqueKey": "https://www.smartone.com/tc/home/mobile-service-plans/student-listing/detail?group=5g_uplan&plan=5g_uplan_10g",
+	"url": "https://www.smartone.com/tc/home/mobile-service-plans/student-listing/detail?group=5g_uplan&plan=5g_uplan_10g"
+}

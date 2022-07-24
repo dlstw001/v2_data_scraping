@@ -1,0 +1,9 @@
+{
+	"id": "14Vdit68AoIPmK2",
+	"json": "{\"id\":\"14Vdit68AoIPmK2\",\"url\":\"https://www.smartone.com/tc/5g-plan/5g-full-speed-plan/?plan_name=5g&group=5g&channel=mass\",\"uniqueKey\":\"https://www.smartone.com/tc/5g-plan/5g-full-speed-plan?channel=mass&group=5g&plan_name=5g\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{}}",
+	"method": "GET",
+	"orderNo": 1658642770187,
+	"retryCount": 0,
+	"uniqueKey": "https://www.smartone.com/tc/5g-plan/5g-full-speed-plan?channel=mass&group=5g&plan_name=5g",
+	"url": "https://www.smartone.com/tc/5g-plan/5g-full-speed-plan/?plan_name=5g&group=5g&channel=mass"
+}

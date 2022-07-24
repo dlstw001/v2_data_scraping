@@ -1,0 +1,9 @@
+{
+	"id": "cUnrWvREAMukBL1",
+	"json": "{\"id\":\"cUnrWvREAMukBL1\",\"url\":\"https://www.smartone.com/tc/home/mobile-service-plans/listing\",\"loadedUrl\":\"https://www.smartone.com/tc/home/mobile-service-plans/listing\",\"uniqueKey\":\"https://www.smartone.com/tc/home/mobile-service-plans/listing\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{},\"handledAt\":\"2022-07-24T06:06:03.848Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.smartone.com/tc/home/mobile-service-plans/listing",
+	"url": "https://www.smartone.com/tc/home/mobile-service-plans/listing"
+}
