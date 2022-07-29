@@ -1,16 +1,23 @@
+import TestCrawler from "./src/crawler/main.js";
+import "dotenv/config";
+/* let process = false;
 
-let process = false;
-
-async function Main () {
-    process = true;
-    setTimeout(function() {
-        console.log('Hello World')
-    },5000);
-    process = false;
+async function Main() {
+  process = true;
+  await new Promise((resolve, reject) =>
+    resolve(TestCrawler()),
+  );
+  process = false;
 }
-setInterval(function() {
-    if (!process){
-        Main(process);
-    }
-}, 1000);
 
+TestCrawler();
+
+setInterval(function () {
+  if (!process) {
+    Main();
+  } else {
+    console.log("Waiting...");
+  }
+}, 60000); */
+
+TestCrawler();
