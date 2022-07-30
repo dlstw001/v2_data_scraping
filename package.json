@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "crawlee": "^3.0.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "html-to-text": "^8.2.0",
     "nodemon": "^2.0.19",
+    "parse-domain": "^7.0.1",
     "puppeteer": "^15.5.0",
     "redis": "^4.2.0"
   },

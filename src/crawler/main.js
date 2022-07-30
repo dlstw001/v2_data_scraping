@@ -1,23 +1,23 @@
 import { PuppeteerCrawler, RequestQueue, RequestList } from "crawlee";
 import requestHandler from "./config.js";
-import http from "../helper/http.js";
+/* import http from "../helper/http.js"; */
 
-export default async function TestCrawler(req) {
+export default async function TestCrawler(reqUrl) {
   const requestQueue = await RequestQueue.open();
+  let requestList;
   let sources;
   let keywordsList = [];
-  if (!req) {
-    try {
+  if (!reqUrl) {
+    /* try {
       const res = await http.get(`/oauth/getUrlList`);
       sources = res.data.map((item) => item.website);
     } catch (err) {
       console.log("Get Urls Error");
-    }
+    } */
+    requestList = await RequestList.open("start_urls", sources);
   } else {
     await requestQueue.addRequests([{ url: reqUrl }]);
   }
-
-  const requestList = await RequestList.open("start_urls", sources);
 
   const crawler = new PuppeteerCrawler({
     launchContext: {
