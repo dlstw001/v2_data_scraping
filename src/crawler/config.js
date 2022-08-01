@@ -1,8 +1,8 @@
-import { EnqueueStrategy } from "crawlee";
-import { convert } from "html-to-text";
-import { parseDomain, fromUrl } from "parse-domain";
-import keywordsList from "../helper/keywordsList.js";
-import http from "../helper/http.js";
+import { EnqueueStrategy } from 'crawlee';
+import { convert } from 'html-to-text';
+import { parseDomain, fromUrl } from 'parse-domain';
+import keywordsList from '../helper/keywordsList.js';
+import http from '../helper/http.js';
 
 export default async function requestHandler({
   request,
@@ -12,7 +12,7 @@ export default async function requestHandler({
 }) {
   const { url } = request;
   const { domain, topLevelDomains } = parseDomain(fromUrl(url));
-  const pageDomain = (domain + "." + topLevelDomains).toString();
+  const pageDomain = (domain + '.' + topLevelDomains).toString();
   let keywordsMatch = [];
 
   let backlinksMatch = {
@@ -30,7 +30,7 @@ export default async function requestHandler({
 
   //Check Keywords
   await keywordsList.map((item) => {
-    const keyword = new RegExp(item.name, "g");
+    const keyword = new RegExp(item.name, 'g');
     let count = pageContent.match(keyword);
     if (count) {
       keywordsMatch.push({
@@ -43,18 +43,18 @@ export default async function requestHandler({
 
   //Check Backlinks
   await page
-    .$$eval("a", (links) => links.map((a) => a.href))
+    .$$eval('a', (links) => links.map((a) => a.href))
     .then((result) =>
       result
-        .filter((item) => parseDomain(fromUrl(item)).domain == "peplink")
+        .filter((item) => parseDomain(fromUrl(item)).domain == 'peplink')
         .map((item) => {
           const { subDomains } = parseDomain(fromUrl(item));
-          subDomains == "www"
+          subDomains == 'www'
             ? backlinksMatch.web++
-            : subDomains == "estore"
+            : subDomains == 'estore'
             ? backlinksMatch.estore++
             : null;
-        }),
+        })
     );
 
   //Send Data to Server
@@ -64,7 +64,7 @@ export default async function requestHandler({
       url: url,
       keywords: keywordsMatch,
     };
-    const res = await http.post("/ouath/insertKeyword", reqBody);
+    await http.post('/ouath/insertKeyword', reqBody);
   }
   if (backlinksMatch.estore > 0 || backlinksMatch.web > 0) {
     const reqBody = {
@@ -73,7 +73,7 @@ export default async function requestHandler({
       estoreCount: backlinksMatch.estore,
       webCount: backlinksMatch.web,
     };
-    const res = await http.post("/ouath/insertBacklink", reqBody);
+    await http.post('/ouath/insertBacklink', reqBody);
   }
 
   await enqueueLinks({
