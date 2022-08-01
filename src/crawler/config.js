@@ -64,7 +64,11 @@ export default async function requestHandler({
       url: url,
       keywords: keywordsMatch,
     };
-    await http.post('/ouath/insertKeyword', reqBody);
+    try {
+      await http.post("/ouath/insertKeyword", reqBody);
+    } catch (error) {
+      console.log(error);
+    }
   }
   if (backlinksMatch.estore > 0 || backlinksMatch.web > 0) {
     const reqBody = {
@@ -73,7 +77,11 @@ export default async function requestHandler({
       estoreCount: backlinksMatch.estore,
       webCount: backlinksMatch.web,
     };
-    await http.post('/ouath/insertBacklink', reqBody);
+    try {
+      await http.post("/ouath/insertBacklink", reqBody);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   await enqueueLinks({
