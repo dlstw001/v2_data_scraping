@@ -1,8 +1,11 @@
-import { EnqueueStrategy } from 'crawlee';
-import { convert } from 'html-to-text';
-import { parseDomain, fromUrl } from 'parse-domain';
-import keywordsList from '../helper/keywordsList.js';
-import http from '../helper/http.js';
+import { EnqueueStrategy, sleep } from "crawlee";
+import { convert } from "html-to-text";
+import { parseDomain, fromUrl } from "parse-domain";
+import keywordsList from "../helper/keywordsList.js";
+import axios from "axios";
+import http from "../helper/http.js";
+import insertKeyword from "../helper/insertKeyword.js";
+import insertBacklink from "../helper/insertBacklink.js";
 
 export default async function requestHandler({
   request,
@@ -12,7 +15,7 @@ export default async function requestHandler({
 }) {
   const { url } = request;
   const { domain, topLevelDomains } = parseDomain(fromUrl(url));
-  const pageDomain = (domain + '.' + topLevelDomains).toString();
+  const pageDomain = (domain + "." + topLevelDomains).toString();
   let keywordsMatch = [];
 
   let backlinksMatch = {
@@ -23,14 +26,16 @@ export default async function requestHandler({
 
   log.info(`Processing ${url}...`);
 
+  await sleep(1000);
   await page.evaluate(() => {
     window.scrollTo(0, window.document.body.scrollHeight);
   });
+  await sleep(1000);
   let pageContent = convert(await page.content());
 
   //Check Keywords
-  await keywordsList.map((item) => {
-    const keyword = new RegExp(item.name, 'g');
+  await keywordsList.data.map((item) => {
+    const keyword = new RegExp(item.name, "g");
     let count = pageContent.match(keyword);
     if (count) {
       keywordsMatch.push({
@@ -41,22 +46,6 @@ export default async function requestHandler({
     }
   });
 
-  //Check Backlinks
-  await page
-    .$$eval('a', (links) => links.map((a) => a.href))
-    .then((result) =>
-      result
-        .filter((item) => parseDomain(fromUrl(item)).domain == 'peplink')
-        .map((item) => {
-          const { subDomains } = parseDomain(fromUrl(item));
-          subDomains == 'www'
-            ? backlinksMatch.web++
-            : subDomains == 'estore'
-            ? backlinksMatch.estore++
-            : null;
-        })
-    );
-
   //Send Data to Server
   if (keywordsMatch.length > 0) {
     const reqBody = {
@@ -64,12 +53,23 @@ export default async function requestHandler({
       url: url,
       keywords: keywordsMatch,
     };
-    try {
-      await http.post("/ouath/insertKeyword", reqBody);
-    } catch (error) {
-      console.log(error);
-    }
+    const res = insertKeyword(reqBody);
+    console.log(res);
   }
+
+  //Check Backlinks
+  let linkResults = await page.$$eval("a", (links) => links.map((a) => a.href));
+  linkResults
+    .filter((item) => parseDomain(fromUrl(item)).domain == "peplink")
+    .map((item) => {
+      const { subDomains } = parseDomain(fromUrl(item));
+      subDomains == "www"
+        ? backlinksMatch.web++
+        : subDomains == "estore"
+        ? backlinksMatch.estore++
+        : null;
+    });
+
   if (backlinksMatch.estore > 0 || backlinksMatch.web > 0) {
     const reqBody = {
       domain: pageDomain,
@@ -77,11 +77,8 @@ export default async function requestHandler({
       estoreCount: backlinksMatch.estore,
       webCount: backlinksMatch.web,
     };
-    try {
-      await http.post("/ouath/insertBacklink", reqBody);
-    } catch (error) {
-      console.log(error);
-    }
+    const res = insertBacklink(reqBody);
+    console.log(res);
   }
 
   await enqueueLinks({
