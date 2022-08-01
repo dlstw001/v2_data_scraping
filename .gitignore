@@ -1,2 +1,4 @@
 node_modules/
 crawlee_storage/
+.yarn/
+yarn.lock
