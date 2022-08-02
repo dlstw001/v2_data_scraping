@@ -2,10 +2,7 @@ import { EnqueueStrategy, sleep } from "crawlee";
 import { convert } from "html-to-text";
 import { parseDomain, fromUrl } from "parse-domain";
 import keywordsList from "../helper/keywordsList.js";
-import axios from "axios";
 import http from "../helper/http.js";
-import insertKeyword from "../helper/insertKeyword.js";
-import insertBacklink from "../helper/insertBacklink.js";
 
 export default async function requestHandler({
   request,
@@ -34,7 +31,7 @@ export default async function requestHandler({
   let pageContent = convert(await page.content());
 
   //Check Keywords
-  await keywordsList.data.map((item) => {
+  await keywordsList.map((item) => {
     const keyword = new RegExp(item.name, "g");
     let count = pageContent.match(keyword);
     if (count) {
@@ -53,8 +50,7 @@ export default async function requestHandler({
       url: url,
       keywords: keywordsMatch,
     };
-    const res = insertKeyword(reqBody);
-    console.log(res);
+    await http.post("/oauth/insertKeyword", reqBody);
   }
 
   //Check Backlinks
@@ -77,8 +73,7 @@ export default async function requestHandler({
       estoreCount: backlinksMatch.estore,
       webCount: backlinksMatch.web,
     };
-    const res = insertBacklink(reqBody);
-    console.log(res);
+    await http.post("/oauth/insertBacklink", reqBody);
   }
 
   await enqueueLinks({

@@ -5,18 +5,20 @@ import 'dotenv/config';
 const client = createClient();
 client.on("error", (err) => console.log("Redis Client Error", err));
 client.connect();
+let token = await client.get("token");
 
 class http {
   constructor() {
     this.axiosInstance = axios.create({
       baseURL: process.env.SERVER_ENDPOINT,
-      timeout: 5000,
     });
     this.axiosInstance.interceptors.request.use(
       async (req) => {
-        let token = await client.get("token");
         if (token) {
-          req.headers.Authorization = `Bearer ${token}`;
+          req.headers = {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          };
           return req;
         } else {
           const loginData = {
@@ -25,7 +27,10 @@ class http {
           };
           await this.getToken(loginData);
           token = await client.get("token");
-          req.headers.Authorization = `Bearer ${token}`;
+          req.headers = {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          };
           return req;
         }
       },
@@ -44,14 +49,13 @@ class http {
   }
 
   getToken = (loginData) =>
-    new Promise((resolve, reject) => {
+    new Promise(async (resolve, reject) => {
       resolve(
-        axios.post(
+        await axios.post(
           `${process.env.SERVER_ENDPOINT}/oauth/authenticate`,
           loginData,
         ),
       );
-      reject(console.log("get token error"));
     }).then(
       (res) => client.set("token", res.data.access_token),
       client.expire("token", 604800),

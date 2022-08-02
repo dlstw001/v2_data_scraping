@@ -11,8 +11,6 @@ async function Main() {
   process = false;
 }
 
-TestCrawler();
-
 setInterval(function () {
   if (!process) {
     Main();
@@ -35,4 +33,4 @@ setInterval(function () {
 const res = await http.post("/oauth/insertKeyword", reqBody);
 console.log(res.data); */
 
-TestCrawler("https://www.smartone.com/tc/home/");
+TestCrawler();
