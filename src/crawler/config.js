@@ -23,11 +23,11 @@ export default async function requestHandler({
 
   log.info(`Processing ${url}...`);
 
-  await sleep(1000);
+  await sleep(1500);
   await page.evaluate(() => {
     window.scrollTo(0, window.document.body.scrollHeight);
   });
-  await sleep(1000);
+  await sleep(1500);
   let pageContent = convert(await page.content());
 
   //Check Keywords
