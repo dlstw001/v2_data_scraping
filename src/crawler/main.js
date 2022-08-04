@@ -23,10 +23,9 @@ export default async function TestCrawler(reqUrl) {
       launchOptions: {
         headless: true,
         args: ["--disable-features=LookalikeUrlNavigationSuggestionsUI"],
-        // Other Puppeteer options
       },
     },
-    maxConcurrency: 10,
+    maxConcurrency: 5,
     requestList,
     requestQueue,
     requestHandler,

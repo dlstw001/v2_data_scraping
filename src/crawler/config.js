@@ -23,60 +23,68 @@ export default async function requestHandler({
 
   log.info(`Processing ${url}...`);
 
-  await sleep(1500);
-  await page.evaluate(() => {
-    window.scrollTo(0, window.document.body.scrollHeight);
-  });
-  await sleep(1500);
-  let pageContent = convert(await page.content());
+  try {
+    await sleep(1500);
+    await page.evaluate(() => {
+      window.scrollTo(0, window.document.body.scrollHeight);
+    });
+    await sleep(1500);
+    let pageContent = convert(await page.content());
 
-  //Check Keywords
-  await keywordsList.map((item) => {
-    const keyword = new RegExp(item.name, "g");
-    let count = pageContent.match(keyword);
-    if (count) {
-      keywordsMatch.push({
-        keyword: item.name,
-        type: item.type,
-        count: count.length,
-      });
-    }
-  });
-
-  //Send Data to Server
-  if (keywordsMatch.length > 0) {
-    const reqBody = {
-      domain: pageDomain,
-      url: url,
-      keywords: keywordsMatch,
-    };
-    await http.post("/oauth/insertKeyword", reqBody);
-  }
-
-  //Check Backlinks
-  let linkResults = await page.$$eval("a", (links) => links.map((a) => a.href));
-  linkResults
-    .filter((item) => parseDomain(fromUrl(item)).domain == "peplink")
-    .map((item) => {
-      const { subDomains } = parseDomain(fromUrl(item));
-      subDomains == "www"
-        ? backlinksMatch.web++
-        : subDomains == "estore"
-        ? backlinksMatch.estore++
-        : null;
+    //Check Keywords
+    await keywordsList.map((item) => {
+      const keyword = new RegExp(item.name, "g");
+      let count = pageContent.match(keyword);
+      if (count) {
+        keywordsMatch.push({
+          keyword: item.name,
+          type: item.type,
+          count: count.length,
+        });
+      }
     });
 
-  if (backlinksMatch.estore > 0 || backlinksMatch.web > 0) {
-    const reqBody = {
-      domain: pageDomain,
-      url: backlinksMatch.url,
-      estoreCount: backlinksMatch.estore,
-      webCount: backlinksMatch.web,
-    };
-    await http.post("/oauth/insertBacklink", reqBody);
-  }
+    //Send Data to Server
+    if (keywordsMatch.length > 0) {
+      const reqBody = {
+        domain: pageDomain,
+        url: url,
+        keywords: keywordsMatch,
+      };
+      await http.post("/oauth/insertKeyword", reqBody);
+    }
 
-  await enqueueLinks({
-    strategy: EnqueueStrategy.SameDomain,
-  });
+    //Check Backlinks
+    let linkResults = await page.$$eval("a", (links) =>
+      links.map((a) => a.href),
+    );
+    linkResults
+      .filter((item) => parseDomain(fromUrl(item)).domain == "peplink")
+      .map((item) => {
+        const { subDomains } = parseDomain(fromUrl(item));
+        subDomains == "www"
+          ? backlinksMatch.web++
+          : subDomains == "estore"
+          ? backlinksMatch.estore++
+          : null;
+      });
+
+    if (backlinksMatch.estore > 0 || backlinksMatch.web > 0) {
+      const reqBody = {
+        domain: pageDomain,
+        url: backlinksMatch.url,
+        estoreCount: backlinksMatch.estore,
+        webCount: backlinksMatch.web,
+      };
+      await http.post("/oauth/insertBacklink", reqBody);
+    }
+
+    await enqueueLinks({
+      strategy: EnqueueStrategy.SameDomain,
+    });
+
+    await page.close();
+  } catch (err) {
+    log.info(err);
+  }
 }
